@@ -67,9 +67,9 @@ while True:
         logo()
         Hex_input = input(Fore.LIGHTGREEN_EX+"Put Hex value you want Converte to ARM64 instruction :")
         os.system('clear')
-        burp0_url = "https://armconverter.com:443/api/convert"
-        burp0_cookies = {"__cfduid": "d9cf886854153f1d87ce3aab9bca0edbd1613734618"}
-        burp0_headers = {
+        hex_url = "https://armconverter.com:443/api/convert"
+        hex_cookies = {"__cfduid": "d9cf886854153f1d87ce3aab9bca0edbd1613734618"}
+        hex_headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:85.0) Gecko/20100101 Firefox/85.0",
             "Accept": "*/*",
             "Accept-Language": "en-US,en;q=0.5",
@@ -78,8 +78,8 @@ while True:
             "Content-Type": "text/plain;charset=UTF-8",
             "Origin": "https://armconverter.com",
             "Connection": "close"}
-        burp0_json = {"hex": Hex_input}
-        re = requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, json=burp0_json)
+        hex_json = {"hex": Hex_input}
+        re = requests.post(burp0_url, headers=hex_headers, cookies=hex_cookies, json=hex_json)
         data = re.json()
         asm = data['asm']
         asmIn = asm['arm64']
@@ -92,14 +92,14 @@ while True:
         arm64_input = input(Fore.LIGHTGREEN_EX+"Put the ARM64 instruction you want Converte to hex : ")
         os.system('clear')
         burp0_url = "https://armconverter.com:443/api/convert"
-        burp0_cookies = {"__cfduid": "d9cf886854153f1d87ce3aab9bca0edbd1613734618"}
-        burp0_headers = {
+        arm64_cookies = {"__cfduid": "d9cf886854153f1d87ce3aab9bca0edbd1613734618"}
+        arm64_headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:85.0) Gecko/20100101 Firefox/85.0",
             "Accept": "*/*", "Accept-Language": "en-US,en;q=0.5", "Accept-Encoding": "gzip, deflate",
             "Referer": "https://armconverter.com/?code=b.eq%20%230x188", "Content-Type": "text/plain;charset=UTF-8",
             "Origin": "https://armconverter.com", "Connection": "close"}
-        burp0_json = {"arch": ["arm64", "arm", "thumb"], "asm":arm64_input, "offset": ""}
-        Read =requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, json=burp0_json)
+        arm64_json = {"arch": ["arm64", "arm", "thumb"], "asm":arm64_input, "offset": ""}
+        Read =requests.post(burp0_url, headers=arm64_headers, cookies=arm64_cookies, json=arm64_json)
         ARM64 = Read.json()
         hex = ARM64['hex']
         hex1 = hex['arm64']
